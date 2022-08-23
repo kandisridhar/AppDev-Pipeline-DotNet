@@ -29,7 +29,7 @@ namespace DotNetCoreSqlDb
         {
             services.AddControllersWithViews();
             services.AddDbContext<MyDatabaseContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
+                    options.UseSqlServer(Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,11 +37,13 @@ namespace DotNetCoreSqlDb
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                // app.UseDeveloperExceptionPage();
+                app.UseExceptionHandler("/Home/Error");
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+               // app.UseExceptionHandler("/Home/Error");
+                app.UseDeveloperExceptionPage();
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 //app.UseHsts();
             }
