@@ -1,32 +1,28 @@
-variable "prefix" {
-  default = "dotnetcoresample"
-}
-
 resource "azurerm_virtual_network" "main" {
-  name                = "${var.prefix}-network"
-  address_space       = ["10.0.0.0/16"]
-  location            = "eastus"
-  resource_group_name = "ranjith"
+  name                = var.vnet_name
+  address_space       = var.vnet_cidr
+  location            = var.location
+  resource_group_name = var.rg_name
 }
 
 resource "azurerm_subnet" "internal" {
-  name                 = "internal"
-  resource_group_name  = "ranjith"
+  name                 = var.subnet_name
+  resource_group_name  = var.rg_name
   virtual_network_name = azurerm_virtual_network.main.name
-  address_prefixes     = ["10.0.2.0/24"]
+  address_prefixes     = var.subnet_cidr
 }
 
 resource "azurerm_public_ip" "public_ip" {
-  name                = "vm_public_ip"
-  resource_group_name = "ranjith"
-  location            = "eastus"
+  name                = var.publicip_name
+  resource_group_name = var.rg_name
+  location            = var.location
   allocation_method   = "Dynamic"
 }
 
 resource "azurerm_network_interface" "main" {
-  name                = "${var.prefix}-nic"
-  location            = "eastus"
-  resource_group_name = "ranjith"
+  name                = var.network_interface_name
+  location            = var.location
+  resource_group_name = var.rg_name
 
   ip_configuration {
     name                          = "testconfiguration1"
@@ -36,9 +32,9 @@ resource "azurerm_network_interface" "main" {
   }
 }
 resource "azurerm_network_security_group" "main" {
-  name                = "dotnetcore_nsg"
-  location            = "eastus"
-  resource_group_name = "ranjith"
+  name                = var.nsg_name
+  location            = var.location
+  resource_group_name = var.rg_name
 
   security_rule {
     name                       = "allow_ssh_sg"
@@ -59,13 +55,13 @@ resource "azurerm_network_interface_security_group_association" "association" {
 }
 
 resource "azurerm_windows_virtual_machine" "main" {
-  name                  = "${var.prefix}-dotnetcore-vm"
-  location              = "eastus"
-  resource_group_name   = "ranjith"
+  name                  = var.vm_name
+  location              = var.location
+  resource_group_name   = var.rg_name
   network_interface_ids = [azurerm_network_interface.main.id]
   size                  = "Standard_DS1_v2"
-  admin_username        = "dotnet"
-  admin_password        = "Dotnet@12345"
+  admin_username        = var.vm_username
+  admin_password        = var.vm_password
   computer_name         = "dotnetcore"
 	
    os_disk {
@@ -86,3 +82,7 @@ resource "azurerm_windows_virtual_machine" "main" {
     version   = "latest"
   }
 }
+
+
+
+
