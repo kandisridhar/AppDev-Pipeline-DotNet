@@ -1,0 +1,29 @@
+@Library('shared-library') _
+pipeline {
+  agent any
+  environment {
+    azcon = credentials('azure-pasha')
+  }
+   
+   stages {   
+    
+    stage('Infra Provisioning') {
+      steps {
+        TerraformDestroy()
+      }
+    }
+    
+    stage('Download Artifact Form Nexus') {
+      steps {
+        DownloadFromNexus()
+      }
+      }
+    stage('DeployToTomcat') {   
+      steps{
+        withCredentials([usernamePassword(credentialsId: 'vmdotnet-creds', passwordVariable: 'password', usernameVariable: 'username')]) {
+        DeployToIIS(username, password)
+       }
+       }
+       }
+    }
+}
