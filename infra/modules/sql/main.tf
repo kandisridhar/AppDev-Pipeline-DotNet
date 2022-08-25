@@ -12,7 +12,7 @@ resource "azurerm_sql_server" "main" {
   location                     = var.location
   version                      = "12.0"
   administrator_login          = "sqluser"
-  administrator_login_password = "Dotnet@2405"
+  administrator_login_password = "Dotnet@24056"
 
   tags = {
     environment = "development"
