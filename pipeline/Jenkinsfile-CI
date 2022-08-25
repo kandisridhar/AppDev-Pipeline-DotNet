@@ -17,7 +17,6 @@ pipeline {
      //         }
         stage('Dotnet Build') {
            steps {
-               cleanWs()
                BuildApp()               
            }
            }
@@ -28,7 +27,8 @@ pipeline {
         //}
         stage('Store war to Nexus') {
            steps {
-               StoreToNexus(env.BUILD_NUMBER)               
+               StoreToNexus(env.BUILD_NUMBER) 
+               cleanWs()
            }
            }
         
