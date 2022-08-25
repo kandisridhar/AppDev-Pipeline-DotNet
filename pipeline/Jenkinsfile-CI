@@ -32,7 +32,8 @@ pipeline {
        }
             stage('DeployToIIS') {
            steps {
-             DeployToIIS()
+             withCredentials([usernamePassword(credentialsId: 'vm-creds', passwordVariable: 'password', usernameVariable: 'username')]) {
+             DeployToIIS(username, password)
              cleanWs()
            }
            }
