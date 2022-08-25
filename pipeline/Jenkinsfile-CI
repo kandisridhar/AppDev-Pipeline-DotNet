@@ -30,7 +30,7 @@ pipeline {
            steps {
                
                echo "${env.BUILD_NUMBER}"
-               StoreToNexus(${env.BUILD_NUMBER}) 
+               StoreToNexus("${env.BUILD_NUMBER}") 
                cleanWs()
            }
            }
