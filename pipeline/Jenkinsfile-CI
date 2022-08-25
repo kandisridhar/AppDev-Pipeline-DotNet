@@ -22,7 +22,7 @@ pipeline {
            SonarApp(sonarlogin)
        }
        }   
-    stage('Store war to Nexus') {
+    stage('Store package to Nexus') {
        steps {
            StoreToNexus()
            cleanWs()
