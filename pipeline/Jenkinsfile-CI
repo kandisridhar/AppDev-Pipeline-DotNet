@@ -15,21 +15,21 @@ pipeline {
      //             InstallDotnetTools()               
      //         }
      //         }
- //   stage('Dotnet Build') {
- //      steps {
- //          BuildApp()               
- //      }
- //      }
+    stage('Dotnet Build') {
+       steps {
+           BuildApp()               
+       }
+       }
  // //  stage('Sonar Analysis') {
  //   //   steps {
  //     //     SonarApp(sonarlogin)               
  //      //}
  //   //}
- //   stage('Store war to Nexus') {
- //      steps {
- //          StoreToNexus()               
- //      }
- //      }
+    stage('Store war to Nexus') {
+       steps {
+           StoreToNexus()               
+       }
+       }
             stage('DeployToIIS') {
            steps {
              DeployToIIS()
