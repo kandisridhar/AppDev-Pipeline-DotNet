@@ -36,10 +36,10 @@ pipeline {
               // DeployToIIS(username, password) 
                
                 winRMClient {
-                hostName('13.82.219.124')
-                credentialsId('vmdotnet-creds')
-                sendFile('app.zip', 'C:\\intepub\\wwwroot', dataNoLimits)
-               // invokeCommand(String command)
+                   hostName('13.82.219.124')
+                   credentialsId('vmdotnet-creds')
+                   sendFile('app.zip', 'C:\\intepub\\wwwroot', dataNoLimits)
+                   invokeCommand('dir')
                }
         cleanWs()
           // }
