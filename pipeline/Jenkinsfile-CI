@@ -5,6 +5,7 @@ pipeline {
     environment {
        sonarlogin = credentials('sonar_token')
        nexuslogin = credentials('nexus-login')
+       buildid = BUILD_NUMBER
        }
     
     
@@ -27,8 +28,8 @@ pipeline {
         //}
         stage('Store war to Nexus') {
            steps {
-               def buildid = env.BUILD_NUMBER
-               echo (buildid)
+               
+               echo(buildid)
                StoreToNexus(buildid) 
                cleanWs()
            }
