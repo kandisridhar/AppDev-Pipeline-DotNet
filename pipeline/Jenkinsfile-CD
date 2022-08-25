@@ -21,6 +21,7 @@ pipeline {
      stage('Start IIS') {
       steps {
         StartIIS()
+        cleanWs()
       }
       }
     }
