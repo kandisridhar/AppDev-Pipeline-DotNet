@@ -5,7 +5,7 @@ pipeline {
     environment {
        sonarlogin = credentials('sonar_token')
        nexuslogin = credentials('nexus-login')
-       buildid = env.BUILD_NUMBER
+   
        }
     
     
@@ -29,8 +29,8 @@ pipeline {
         stage('Store war to Nexus') {
            steps {
                
-               echo(buildid)
-               StoreToNexus(buildid) 
+               echo($BUILD_NUMBER)
+               StoreToNexus($BUILD_NUMBER) 
                cleanWs()
            }
            }
