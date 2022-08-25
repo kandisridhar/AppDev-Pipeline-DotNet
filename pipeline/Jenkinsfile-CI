@@ -41,7 +41,7 @@ pipeline {
           //         sendFile('app.zip', 'C:\\intepub\\wwwroot', dataNoLimits)
           //         invokeCommand('dir')
           //     }
-               winRMClient credentialsId: 'vmdotnet-creds', hostName: '13.82.219.124', winRMOperations: [invokeCommand('dir'), sendFile(configurationName: 'DataNoLimits', destination: 'C:\\intepub\\wwwroot', source: 'app.zip')]
+               winRMClient credentialsId: 'vmdotnet-creds', hostName: '40.114.48.109', winRMOperations: [invokeCommand('dir'), sendFile(configurationName: 'DataNoLimits', destination: 'C:\\intepub\\wwwroot', source: 'app.zip')]
         cleanWs()
           // }
            }
