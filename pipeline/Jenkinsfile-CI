@@ -29,8 +29,8 @@ pipeline {
         stage('Store war to Nexus') {
            steps {
                
-               echo($BUILD_NUMBER)
-               StoreToNexus($BUILD_NUMBER) 
+               echo "${env.BUILD_NUMBER}"
+               StoreToNexus(${env.BUILD_NUMBER}) 
                cleanWs()
            }
            }
