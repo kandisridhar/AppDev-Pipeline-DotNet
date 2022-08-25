@@ -27,7 +27,7 @@ pipeline {
         //}
         stage('Store war to Nexus') {
            steps {
-               StoreToNexus($nexuslogin_username, $nexuslogin_password, env.BUILD_NUMBER)               
+               StoreToNexus(env.BUILD_NUMBER)               
            }
            }
         
