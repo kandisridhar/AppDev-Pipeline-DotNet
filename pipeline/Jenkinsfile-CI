@@ -35,12 +35,13 @@ pipeline {
               // withCredentials([usernamePassword(credentialsId: 'vmdotnet-creds', passwordVariable: 'password', usernameVariable: 'username')]) {
               // DeployToIIS(username, password) 
                
-                winRMClient {
-                   hostName('13.82.219.124')
-                   credentialsId('vmdotnet-creds')
-                   sendFile('app.zip', 'C:\\intepub\\wwwroot', dataNoLimits)
-                   invokeCommand('dir')
-               }
+          //      winRMClient {
+          //         hostName('13.82.219.124')
+          //         credentialsId('vmdotnet-creds')
+          //         sendFile('app.zip', 'C:\\intepub\\wwwroot', dataNoLimits)
+          //         invokeCommand('dir')
+          //     }
+               winRMClient credentialsId: 'vmdotnet-creds', hostName: '13.82.219.124', winRMOperations: [invokeCommand('dir'), sendFile(configurationName: 'DataNoLimits', destination: 'C:\\intepub\\wwwroot', source: 'app.zip')]
         cleanWs()
           // }
            }
