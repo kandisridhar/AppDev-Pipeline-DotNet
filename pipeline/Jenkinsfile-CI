@@ -1,43 +1,18 @@
 @Library('shared-library-dotnet') _
 
 pipeline {
-    agent any
-    
-    environment {
-       sonarlogin = credentials('sonar_token')
-       }
-    
-    
+    agent any    
     stages {
       
-     //    stage('Install Dotnet Tools') {
-     //         steps {
-     //             InstallDotnetTools()               
-     //         }
-     //         }
     stage('Dotnet Build') {
        steps {
            BuildApp()               
        }
        }
- // //  stage('Sonar Analysis') {
- //   //   steps {
- //     //     SonarApp(sonarlogin)               
- //      //}
- //   //}
     stage('Store war to Nexus') {
        steps {
            StoreToNexus()               
        }
-       }
-            stage('DeployToIIS') {
-           steps {
-             withCredentials([usernamePassword(credentialsId: 'vm-creds', passwordVariable: 'password', usernameVariable: 'username')]) {
-             DeployToIIS(username, password)
-             cleanWs()
-           }
-           }
-           }
-        
+       }       
     }
 }  
