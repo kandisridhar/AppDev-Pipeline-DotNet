@@ -14,7 +14,11 @@ pipeline {
        }
        }
      stage('SonarAnalysis') {
+       tools {
+                   jdk "java"
+                }
        steps {
+     
            SonarApp(sonarlogin)
        }
        }   
