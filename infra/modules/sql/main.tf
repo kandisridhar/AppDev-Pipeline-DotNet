@@ -11,8 +11,8 @@ resource "azurerm_sql_server" "main" {
   resource_group_name          = var.rg_name
   location                     = var.location
   version                      = "12.0"
-  administrator_login          = var.sql_username
-  administrator_login_password = var.sql_password
+  administrator_login          = "sqluser"
+  administrator_login_password = "Dotnet@2405"
 
   tags = {
     environment = "development"
