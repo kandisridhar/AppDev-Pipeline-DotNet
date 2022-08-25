@@ -10,12 +10,12 @@ pipeline {
     
     stages {
       
-    //  stage('Install Dotnet Tools') {
-    //       steps {
-    //           InstallDotnetTools()               
-    //       }
-    //       }
-       stage('Dotnet Build') {
+         stage('Install Dotnet Tools') {
+              steps {
+                  InstallDotnetTools()               
+              }
+              }
+        stage('Dotnet Build') {
            steps {
                BuildApp()               
            }
