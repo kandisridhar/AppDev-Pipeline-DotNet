@@ -5,7 +5,7 @@ pipeline {
     environment {
        sonarlogin = credentials('sonar_token')
        nexuslogin = credentials('nexus-login')
-       buildid = BUILD_NUMBER
+       buildid = env.BUILD_NUMBER
        }
     
     
