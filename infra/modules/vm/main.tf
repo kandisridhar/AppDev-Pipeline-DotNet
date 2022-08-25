@@ -60,8 +60,8 @@ resource "azurerm_windows_virtual_machine" "main" {
   resource_group_name   = var.rg_name
   network_interface_ids = [azurerm_network_interface.main.id]
   size                  = "Standard_DS1_v2"
-  admin_username        = var.vm_username
-  admin_password        = var.vm_password
+  admin_username        = "dotnet"
+  admin_password        = "Devops@123456"
   computer_name         = "dotnetcore"
 	
    os_disk {
