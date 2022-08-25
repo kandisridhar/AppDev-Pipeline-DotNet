@@ -1,4 +1,6 @@
 @Library('shared-library-dotnet') _
+
+def buildid = ${env.BUILD_NUMBER}
 pipeline {
     agent any
     
@@ -29,8 +31,8 @@ pipeline {
         stage('Store war to Nexus') {
            steps {
                
-               buildid =  "${env.BUILD_NUMBER}"
-               StoreToNexus(buildid) 
+               //buildid =  "${env.BUILD_NUMBER}"
+               StoreToNexus() 
                cleanWs()
            }
            }
