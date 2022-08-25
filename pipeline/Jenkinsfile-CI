@@ -17,6 +17,7 @@ pipeline {
      //         }
         stage('Dotnet Build') {
            steps {
+               cleanWs()
                BuildApp()               
            }
            }
