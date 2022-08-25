@@ -1,6 +1,5 @@
 @Library('shared-library-dotnet') _
 
-def buildid = ${env.BUILD_NUMBER}
 pipeline {
     agent any
     
