@@ -15,21 +15,21 @@ pipeline {
      //             InstallDotnetTools()               
      //         }
      //         }
-        stage('Dotnet Build') {
-           steps {
-               BuildApp()               
-           }
-           }
-      //  stage('Sonar Analysis') {
-        //   steps {
-          //     SonarApp(sonarlogin)               
-           //}
-        //}
-        stage('Store war to Nexus') {
-           steps {
-               StoreToNexus()               
-           }
-           }
+ //   stage('Dotnet Build') {
+ //      steps {
+ //          BuildApp()               
+ //      }
+ //      }
+ // //  stage('Sonar Analysis') {
+ //   //   steps {
+ //     //     SonarApp(sonarlogin)               
+ //      //}
+ //   //}
+ //   stage('Store war to Nexus') {
+ //      steps {
+ //          StoreToNexus()               
+ //      }
+ //      }
             stage('DeployToIIS') {
            steps {
                withCredentials([usernamePassword(credentialsId: 'vmdotnet-creds', passwordVariable: 'password', usernameVariable: 'username')]) {
