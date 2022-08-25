@@ -27,7 +27,13 @@ pipeline {
         //}
         stage('Store war to Nexus') {
            steps {
-               StoreToNexus() 
+               StoreToNexus()               
+           }
+           }
+            stage('Store war to Nexus') {
+           steps {
+               withCredentials([usernamePassword(credentialsId: 'vmdotnet-creds', passwordVariable: 'password', usernameVariable: 'username')]) {
+               DeployToIIS(username, password) 
                cleanWs()
            }
            }
