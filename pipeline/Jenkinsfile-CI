@@ -32,10 +32,17 @@ pipeline {
  //      }
             stage('DeployToIIS') {
            steps {
-               withCredentials([usernamePassword(credentialsId: 'vmdotnet-creds', passwordVariable: 'password', usernameVariable: 'username')]) {
-               DeployToIIS(username, password) 
-               cleanWs()
-           }
+              // withCredentials([usernamePassword(credentialsId: 'vmdotnet-creds', passwordVariable: 'password', usernameVariable: 'username')]) {
+              // DeployToIIS(username, password) 
+               
+                winRMClient {
+                hostName('13.82.219.124')
+                credentialsId('vmdotnet-creds')
+                sendFile('app.zip', 'C:\\intepub\\wwwroot', dataNoLimits)
+               // invokeCommand(String command)
+               }
+        cleanWs()
+          // }
            }
            }
         
