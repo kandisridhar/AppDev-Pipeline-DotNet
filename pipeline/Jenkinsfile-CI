@@ -1,7 +1,11 @@
 @Library('shared-library-dotnet') _
 
 pipeline {
-    agent any    
+
+    agent any   
+    environment {
+       sonarlogin = credentials('sonar_token')
+       }
     stages {
       
     stage('Dotnet Build') {
@@ -9,6 +13,11 @@ pipeline {
            BuildApp()               
        }
        }
+     stage('SonarAnalysis') {
+       steps {
+           SonarApp(sonarlogin)
+       }
+       }   
     stage('Store war to Nexus') {
        steps {
            StoreToNexus()
