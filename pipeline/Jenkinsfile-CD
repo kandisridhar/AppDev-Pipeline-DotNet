@@ -5,25 +5,28 @@ pipeline {
     azcon = credentials('azure-pasha')
   }
    
-   stages {   
-    
-    stage('Infra Provisioning') {
-      steps {
-        TerraformDestroy()
-      }
-    }
-    
+   stages {       
     stage('Download Artifact Form Nexus') {
       steps {
         DownloadFromNexus()
       }
       }
-    stage('DeployToTomcat') {   
+    stage('Stop IIS') {
+      steps {
+        StopIIS()
+      }
+      }
+    stage('DeployToIIS') {   
       steps{
         withCredentials([usernamePassword(credentialsId: 'vmdotnet-creds', passwordVariable: 'password', usernameVariable: 'username')]) {
         DeployToIIS(username, password)
        }
        }
        }
+     stage('Start IIS') {
+      steps {
+        StartIIS()
+      }
+      }
     }
 }
