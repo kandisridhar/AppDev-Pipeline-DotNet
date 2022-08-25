@@ -20,11 +20,11 @@ pipeline {
                BuildApp()               
            }
            }
-        stage('Sonar Analysis') {
-           steps {
-               SonarApp(sonarlogin)               
-           }
-        }
+      //  stage('Sonar Analysis') {
+        //   steps {
+          //     SonarApp(sonarlogin)               
+           //}
+        //}
         stage('Store war to Nexus') {
            steps {
                StoreToNexus($nexuslogin.username, $nexuslogin.password, env.BUILD_NUMBER)               
