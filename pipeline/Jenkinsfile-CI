@@ -9,6 +9,9 @@ pipeline {
     stages {
       
     stage('Dotnet Build') {
+     tools {
+                   jdk "java"
+                }
        steps {
            BuildApp()               
        }
