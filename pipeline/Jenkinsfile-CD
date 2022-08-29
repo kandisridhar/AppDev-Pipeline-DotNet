@@ -19,7 +19,7 @@ pipeline {
       }
     stage('Stop IIS') {
       steps {
-        StopIIS()
+        SetupTarget()
       }
       }
     stage('DeployToIIS') {   
