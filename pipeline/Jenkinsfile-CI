@@ -27,10 +27,9 @@ pipeline {
    //    }   
     stage('Store package to Nexus') {
        steps {
-           withCredentials([usernamePassword(credentialsId: 'nexus-login', passwordVariable: 'password', usernameVariable: 'username')]) {
            StoreToNexus(username, password)
            cleanWs()
-           }
+           
        }       
     }
 }  
