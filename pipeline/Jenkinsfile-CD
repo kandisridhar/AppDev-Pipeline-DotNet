@@ -1,6 +1,10 @@
 @Library('shared-library-dotnet') _
 pipeline {
   agent any
+  
+   environment {
+    azcon = credentials('azure-pasha')
+  }
    
    stages {       
     stage('Download Artifact From Nexus') {
