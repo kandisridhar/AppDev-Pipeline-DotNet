@@ -8,24 +8,24 @@ pipeline {
        }
     stages {
       
-   // stage('Dotnet Build') {
-   //  tools {
-   //                jdk "java"
-   //             }
-   //    steps {
-   //        BuildApp()               
-   //    }
-   //    }
-   //  stage('SonarAnalysis') {
-   //    tools {
-   //                jdk "java"
-   //             }
-   //    steps {
-   //  
-   //        SonarApp(sonarlogin)
-   //    }
-   //    }   
-    stage('Store package to Nexus') {
+   stage('Dotnet Build') {
+    tools {
+                  jdk "java"
+               }
+      steps {
+          BuildApp()               
+      }
+      }
+   stage('SonarAnalysis') {
+      tools {
+                  jdk "java"
+               }
+      steps {
+    
+          SonarApp(sonarlogin)
+      }
+      }   
+   stage('Store package to Nexus') {
        steps {
            StoreToNexus()
            cleanWs()
