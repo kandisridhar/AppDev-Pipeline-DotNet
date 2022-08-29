@@ -27,7 +27,7 @@ pipeline {
    //    }   
     stage('Store package to Nexus') {
        steps {
-           StoreToNexus(username, password)
+           StoreToNexus()
            cleanWs()
            
        }       
