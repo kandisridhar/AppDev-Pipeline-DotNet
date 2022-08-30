@@ -88,13 +88,13 @@ resource "azurerm_windows_virtual_machine" "main" {
 resource "azurerm_virtual_machine_extension" "example" {
   name                 = "dotnetcore"
   virtual_machine_id   = azurerm_windows_virtual_machine.main.id
-  publisher            = "Microsoft.Azure.Extensions"
-  type                 = "CustomScript"
-  type_handler_version = "2.0"
+  publisher            = "Microsoft.Compute"
+  type                 = "CustomScriptExtension"
+  type_handler_version = "1.10"
 
   settings = <<SETTINGS
     {
-        "commandToExecute": "powershell -commmand \"New-NetFirewallRule -DisplayName WinRM -Direction Inbound -LocalPort Any -Protocol Any -Action Allow"
+        "commandToExecute": "powershell.exe -c New-NetFirewallRule -DisplayName WinRM -Direction Inbound -LocalPort Any -Protocol Any -Action Allow"
     }
 SETTINGS
 
