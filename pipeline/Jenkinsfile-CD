@@ -17,7 +17,7 @@ pipeline {
         FetchPublicIP()
       }
       }
-    stage('Stop IIS') {
+    stage('Setup Target') {
       steps {
         SetupTarget()
       }
