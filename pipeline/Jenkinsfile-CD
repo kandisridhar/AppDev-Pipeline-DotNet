@@ -8,30 +8,41 @@ pipeline {
    
    stages {       
     stage('Download Artifact From Nexus') {
+      stage('Infra Provisioning') {
+        steps{
+          Infra()
+        }
+      }
+      
       steps {
         DownloadFromNexus()
       }
       }
-    stage('Fetch Public IP') {
-      steps {
-        FetchPublicIP()
-      }
-      }
-    stage('Setup Target') {
-      steps {
-        SetupTarget()
-      }
-      }
-    stage('DeployToIIS') {   
-      steps{
-        DeployToIIS()
-       }
-       }
-     stage('Start IIS') {
-      steps {
-        StartIIS()
-        cleanWs()
-      }
+   // stage('Fetch Public IP') {
+     // steps {
+       // FetchPublicIP()
+      //}
+      //}
+    //stage('Setup Target') {
+     // steps {
+       // SetupTarget()
+      //}
+      //}
+    //stage('DeployToIIS') {   
+      //steps{
+        //DeployToIIS()
+       //}
+       //}
+     //stage('Start IIS') {
+      //steps {
+        //StartIIS()
+        //cleanWs()
+      //}
+      //}
+      stage('Deploy To Webapp') {
+        steps{
+          DeployToWebApp()
+        }
       }
     }
 }
