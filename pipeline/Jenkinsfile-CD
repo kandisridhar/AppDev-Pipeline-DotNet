@@ -7,13 +7,12 @@ pipeline {
   }
    
    stages {       
-    stage('Download Artifact From Nexus') {
-      stage('Infra Provisioning') {
+    stage('Infra Provisioning') {
         steps{
           Infra()
         }
       }
-      
+    stage('Download Artifact From Nexus') {
       steps {
         DownloadFromNexus()
       }
