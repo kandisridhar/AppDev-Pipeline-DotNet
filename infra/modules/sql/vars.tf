@@ -1,14 +1,14 @@
 variable "rg_name" {
-  default     = "ranjith"
+  default     = "dotnetiis"
 }
 variable "location" {
   default     = "eastus"
 }
 variable "storage_name" {
-  default     = "dotnetcoresamplestorage"
+  default     = "dotnetcoresampletest"
 }
 variable "sql_server_name" {
-  default     = "dotnetcoresamplesqlserver"
+  default     = "dotnetcoresamplesqltest"
 }
 variable "sql_username" {
   default     = "sqluser"
