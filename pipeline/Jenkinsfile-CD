@@ -6,42 +6,36 @@ pipeline {
     azcon = credentials('azure-pasha')
   }
    
-   stages {       
-    stage('Infra Provisioning') {
-        steps{
-          Infra()
-        }
-      }
     stage('Download Artifact From Nexus') {
       steps {
         DownloadFromNexus()
       }
       }
-   // stage('Fetch Public IP') {
-     // steps {
-       // FetchPublicIP()
-      //}
-      //}
-    //stage('Setup Target') {
-     // steps {
-       // SetupTarget()
-      //}
-      //}
-    //stage('DeployToIIS') {   
-      //steps{
-        //DeployToIIS()
-       //}
-       //}
-     //stage('Start IIS') {
-      //steps {
-        //StartIIS()
-        //cleanWs()
-      //}
-      //}
-      stage('Deploy To Webapp') {
-        steps{
-          DeployToWebApp()
-        }
+    stage('Fetch Public IP') {
+      steps {
+        FetchPublicIP()
       }
+      }
+    stage('Setup Target') {
+     steps {
+        SetupTarget()
+      }
+      }
+    stage('DeployToIIS') {   
+      steps{
+        DeployToIIS()
+       }
+       }
+    stage('Start IIS') {
+      steps {
+        StartIIS()
+        cleanWs()
+      }
+      }
+     // stage('Deploy To Webapp') {
+     //   steps{
+     //     DeployToWebApp()
+     //   }
+     // }
     }
 }
