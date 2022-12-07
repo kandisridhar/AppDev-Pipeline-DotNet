@@ -4,7 +4,7 @@ terraform {
     repo     = "terraform" 
     subpath  = "dotnet"
     username = "admin" 
-    password = "admin" 
+    password = "Hexaware@12345" 
   }
 
   required_providers {
