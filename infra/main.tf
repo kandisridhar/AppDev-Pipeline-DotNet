@@ -21,8 +21,8 @@ provider "azurerm" {
   features {}
 }
 
-module "webapp" {
-  source    = "./modules/webapp"
+module "vm" {
+  source    = "./modules/vm"
   
 }
 
