@@ -3,8 +3,8 @@ terraform {
     url      = "http://localhost:8081/repository/" 
     repo     = "terraform" 
     subpath  = "dotnet"
-    username = "admin" 
-    password = "Hexaware@12345" 
+    username = "sridhar" 
+    password = "sridhar123" 
   }
 
   required_providers {
